@@ -49,6 +49,8 @@ describe('lazy-bouncer routes', () => {
     });
   });
 
+
+
   it('returns the current user', async () => {
     const [agent, user] = await registerAndLogin();
     const me = await agent.get('/api/v1/users/me');
@@ -60,6 +62,9 @@ describe('lazy-bouncer routes', () => {
     });
   });
 
+
+
+
   it('should return a 401 when signed out and listing all users', async () => {
     const res = await request(app).get('/api/v1/users');
 
@@ -68,6 +73,10 @@ describe('lazy-bouncer routes', () => {
       status: 401,
     });
   });
+
+
+
+
 
   it('should return a 403 when signed in but not admin and listing all users', async () => {
     const [agent] = await registerAndLogin();
@@ -78,6 +87,9 @@ describe('lazy-bouncer routes', () => {
       status: 403,
     });
   });
+
+
+
 
   it('should return a list of users if signed in as admin', async () => {
     const [agent, user] = await registerAndLogin({ email: 'admin' });
